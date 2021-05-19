@@ -1,0 +1,24 @@
+{
+    "name": "beebots/magento2-scheduled-cms-block",
+    "description": "Cms block with start and stop time",
+    "require": {
+        "php": "^7.3",
+        "../../../../vendor/magento/module-cms": "103.0.7"
+    },
+    "type": "magento2-module",
+    "version": "0.1.0",
+    "license": "MIT",
+    "support": {
+        "docs": "https://github.com/beebots/magento2-scheduled-cms-block",
+        "issues": "https://github.com/beebots/magento2-scheduled-cms-block/issues",
+        "source": "https://github.com/beebots/magento2-scheduled-cms-block"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "BeeBots\\ScheduledCmsBlock\\": ""
+        }
+    }
+}
