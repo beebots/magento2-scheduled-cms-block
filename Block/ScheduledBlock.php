@@ -6,7 +6,10 @@ use DateTime;
 use DateTimeZone;
 use Exception;
 use Magento\Cms\Block\Block;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\View\Element\AbstractBlock;
+use Magento\Framework\View\Element\Template\Context;
+
 
 /**
  * Class ScheduledBlock
@@ -16,20 +19,13 @@ use Magento\Framework\View\Element\AbstractBlock;
 class ScheduledBlock extends AbstractBlock
 {
 
-    /**
-     * @var \Magento\Framework\Stdlib\DateTime\TimezoneInterface
-     */
+    /** @var TimezoneInterface */
     private $timezone;
 
-    /**
-     * @param \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezone
-     * @param Context $context
-     * @param array $data
-     */
-    public function __construct(\Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezone, Context $context, array $data = [])
+    public function __construct(Context $context, TimezoneInterface $timezone, array $data = [])
     {
-        $this->timezone = $timezone;
         parent::__construct($context, $data);
+        $this->timezone = $timezone;
     }
 
     /**

@@ -22,7 +22,7 @@ See optional: https://github.com/beebots/magento2-scheduled-cache-flush
 
 
     {{block
-        class='BeeBots\\ScheduledCmsBlock\\Block\\ScheduledBlock'
+        class='\BeeBots\ScheduledCmsBlock\Block\ScheduledBlock'
         startDate='2021-05-01T16:59'
         stopDate='2021-05-31T12:00'
         id='my-block-123'
