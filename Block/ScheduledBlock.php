@@ -15,6 +15,23 @@ use Magento\Framework\View\Element\AbstractBlock;
  */
 class ScheduledBlock extends AbstractBlock
 {
+
+    /**
+     * @var \Magento\Framework\Stdlib\DateTime\TimezoneInterface
+     */
+    private $timezone;
+
+    /**
+     * @param \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezone
+     * @param Context $context
+     * @param array $data
+     */
+    public function __construct(\Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezone, Context $context, array $data = [])
+    {
+        $this->timezone = $timezone;
+        parent::__construct($context, $data);
+    }
+
     /**
      * Function: _toHtml
      *
@@ -30,7 +47,9 @@ class ScheduledBlock extends AbstractBlock
         //If there is no stop date set the stop date to distant future date
         $stopDateString = $this->getData('stopDate') ?? '2100-12-30';
 
-        $timeZone = new DateTimeZone('America/Los_Angeles');
+        $storeTimeZone = $this->timezone->getConfigTimezone() ?? 'America/Los_Angeles';
+
+        $timeZone = new DateTimeZone($storeTimeZone);
         try {
             $startDate = new DateTime($startDateString, $timeZone);
             $stopDate = $stopDateString ? new DateTime($stopDateString, $timeZone) : null;
